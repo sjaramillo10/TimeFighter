@@ -53,7 +53,15 @@ class MainActivity : AppCompatActivity() {
         gameStarted = false
     }
 
+    private fun startGame() {
+        countDownTimer.start()
+        gameStarted = true
+    }
+
     private fun incrementScore() {
+        if(!gameStarted) {
+            startGame()
+        }
         score += 1
         val newScore = getString(R.string.your_score, score.toString())
         gameScoreTextView.text = newScore
